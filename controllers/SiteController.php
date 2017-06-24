@@ -60,16 +60,16 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
-    {
-        if(!Yii::$app->user->isGuest){
-            return $this->render('index');
+    { 
+       $this->layout = "main";
+        if (!Yii::$app->user->isGuest) {
+            return $this->render('index');;
         }else{
-            $this->layout = "main-login";
             $model = new LoginForm();
             if ($model->load(Yii::$app->request->post()) && $model->login()) {
-                $this->layout = "main";
-                return $this->render('index');
+                return $this->goHome();
             }
+            $this->layout = "main-login";
             return $this->render('login', [
                 'model' => $model,
             ]);
@@ -85,11 +85,11 @@ class SiteController extends Controller
     {
         $this->layout = "main";
         if (!Yii::$app->user->isGuest) {
-            return $this->render('index');
+            return $this->goHome();;
         }else{
             $model = new LoginForm();
             if ($model->load(Yii::$app->request->post()) && $model->login()) {
-                return $this->render('index');
+                return $this->goHome();
             }
             $this->layout = "main-login";
             return $this->render('login', [

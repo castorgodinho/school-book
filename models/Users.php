@@ -65,7 +65,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+        return self::findOne(["user_id" => $id]);
     }
 
     public static function findIdentityByAccessToken($token, $type = null)
@@ -85,7 +85,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        return $this->auth_Key === $authKey;
     }
 
     public function validatePassword($password)
@@ -95,7 +95,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public static function findByUsername($email)
     {
-        return static::findOne(['email' => $email]);
+        return self::findOne(['email' => $email]);
     }
 
 }
