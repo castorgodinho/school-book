@@ -61,7 +61,19 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if(!Yii::$app->user->isGuest){
+            return $this->render('index');
+        }else{
+            $this->layout = "main-login";
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                $this->layout = "main";
+                return $this->render('index');
+            }
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
@@ -71,17 +83,19 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = "main";
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->render('index');
+        }else{
+            $model = new LoginForm();
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                return $this->render('index');
+            }
+            $this->layout = "main-login";
+            return $this->render('login', [
+                'model' => $model,
+            ]);
         }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
     }
 
     /**
