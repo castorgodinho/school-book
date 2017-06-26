@@ -31,6 +31,12 @@
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+                    ['label' => 'Settings', 'icon' => 'file-code-o', 'url' => '#',
+                        'items' => [
+                            ['label' => 'Class managment', 'icon' => 'file-code-o', 'url' => ['/class']],
+                            ['label' => 'Division managment', 'icon' => 'file-code-o', 'url' => ['/division']],
+                        ],
+                    ],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
