@@ -78,6 +78,10 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->user_id;
     }
 
+    public function getName(){
+        return $this->fname + " " + $this->lname;
+    }
+
     public function getAuthKey()
     {
         return $this->auth_key;
@@ -85,7 +89,7 @@ class Users extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 
     public function validateAuthKey($authKey)
     {
-        return $this->auth_Key === $authKey;
+        return $this->getAuthKey() === $authKey;
     }
 
     public function validatePassword($password)
