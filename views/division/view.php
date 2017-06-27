@@ -12,6 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="division-view">
 
+
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->division_id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->division_id], [
