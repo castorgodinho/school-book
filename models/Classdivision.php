@@ -28,7 +28,7 @@ class Classdivision extends \yii\db\ActiveRecord
     {
         return [
             [['divison_id', 'class_id', 'status'], 'required'],
-            [['divison_id', 'class_id', 'status'], 'integer'],
+            [[ 'class_id', 'status'], 'integer'],
         ];
     }
 

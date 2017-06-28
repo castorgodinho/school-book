@@ -48,4 +48,5 @@ use app\models\Division;
        
     </div>
     <?php ActiveForm::end(); ?>
+    
 </div>
