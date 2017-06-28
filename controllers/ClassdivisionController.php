@@ -16,7 +16,22 @@ use app\models\SchoolClass;
 class ClassdivisionController extends Controller
 {
     public function actionIndex()
-    {
+    {   
+
+        $class = SchoolClass::findOne(1);
+        echo $class->division;
+
+
+        /*$dataProvider = new ActiveDataProvider([
+            'query' => Classdivision::find(), 
+        ]);
+
+        return $this->render('index',[
+            'dataProvider' => $dataProvider, 
+        ]);*/
+    }
+
+    public function actionCreate(){
         $classdivisionModel = new ClassDivision();
         if($classdivisionModel->load(Yii::$app->request->post())){
             foreach($classdivisionModel->divison_id as $id){

@@ -51,4 +51,10 @@ class SchoolClass extends \yii\db\ActiveRecord
     {
         return $this->hasMany(SubjectClass::className(), ['class_id' => 'class_id']);
     }
+
+    public function getDivision() 
+    {
+        return $this->hasMany(Division::className(), ['id' => 'division_id'])
+        ->viaTable('class_division', ['class_id', 'class_id']);
+    }
 }

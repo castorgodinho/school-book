@@ -43,4 +43,5 @@ class Classdivision extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+    
 }
