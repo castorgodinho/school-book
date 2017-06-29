@@ -33,11 +33,12 @@
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     ['label' => 'Settings', 'icon' => 'file-code-o', 'url' => '#',
                         'items' => [
-                            ['label' => 'Class managment', 'icon' => 'file-code-o', 'url' => ['/class']],
+                            ['label' => 'Class managment', 'icon' => 'file-code-o', 'url' => ['/grade']],
                             ['label' => 'Division managment', 'icon' => 'file-code-o', 'url' => ['/division']],
                         ],
                     ],
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
+                    ['label' => 'Sajid', 'icon' => 'file-code-o', 'url' => ['/wendham']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [

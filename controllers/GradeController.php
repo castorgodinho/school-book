@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\SchoolClass;
-use yii\data\ActiveDataProvider;
+use app\models\Grade;
+use app\models\SearchGrade;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ClassController implements the CRUD actions for SchoolClass model.
+ * GradeController implements the CRUD actions for Grade model.
  */
-class ClassController extends Controller
+class GradeController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,22 +30,22 @@ class ClassController extends Controller
     }
 
     /**
-     * Lists all SchoolClass models.
+     * Lists all Grade models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => SchoolClass::find(),
-        ]);
+        $searchModel = new SearchGrade();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single SchoolClass model.
+     * Displays a single Grade model.
      * @param integer $id
      * @return mixed
      */
@@ -57,16 +57,16 @@ class ClassController extends Controller
     }
 
     /**
-     * Creates a new SchoolClass model.
+     * Creates a new Grade model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new SchoolClass();
+        $model = new Grade();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->class_id]);
+            return $this->redirect(['view', 'id' => $model->grade_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +75,7 @@ class ClassController extends Controller
     }
 
     /**
-     * Updates an existing SchoolClass model.
+     * Updates an existing Grade model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,7 +85,7 @@ class ClassController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->class_id]);
+            return $this->redirect(['view', 'id' => $model->grade_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,7 +94,7 @@ class ClassController extends Controller
     }
 
     /**
-     * Deletes an existing SchoolClass model.
+     * Deletes an existing Grade model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class ClassController extends Controller
     }
 
     /**
-     * Finds the SchoolClass model based on its primary key value.
+     * Finds the Grade model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return SchoolClass the loaded model
+     * @return Grade the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = SchoolClass::findOne($id)) !== null) {
+        if (($model = Grade::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

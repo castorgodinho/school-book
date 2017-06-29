@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Division;
-use yii\data\ActiveDataProvider;
+use app\models\SearchDivision;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,11 +35,11 @@ class DivisionController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Division::find(),
-        ]);
+        $searchModel = new SearchDivision();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
