@@ -6,13 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Division */
 
-$this->title = $model->division_id;
+$this->title = "Division " . $model->division_label;
 $this->params['breadcrumbs'][] = ['label' => 'Divisions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="division-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->division_id], ['class' => 'btn btn-primary']) ?>
@@ -30,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'division_id',
             'division_label',
-            'status',
         ],
     ]) ?>
 

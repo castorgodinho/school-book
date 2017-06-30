@@ -6,13 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Grade */
 
-$this->title = $model->grade_id;
+$this->title = $model->grade_label;
 $this->params['breadcrumbs'][] = ['label' => 'Grades', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="grade-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->grade_id], ['class' => 'btn btn-primary']) ?>
@@ -30,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'grade_id',
             'grade_label',
-            'status',
         ],
     ]) ?>
 

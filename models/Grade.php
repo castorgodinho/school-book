@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $grade_id
  * @property string $grade_label
- * @property integer $status
  *
  * @property ClassDivision[] $classDivisions
  * @property Division[] $divisions
@@ -34,9 +33,9 @@ class Grade extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['grade_label', 'status'], 'required'],
-            [['status'], 'integer'],
+            [['grade_label'], 'required'],
             [['grade_label'], 'string', 'max' => 10],
+            ['grade_label', 'unique']
         ];
     }
 
@@ -48,7 +47,6 @@ class Grade extends \yii\db\ActiveRecord
         return [
             'grade_id' => 'Grade ID',
             'grade_label' => 'Grade Label',
-            'status' => 'Status',
         ];
     }
 

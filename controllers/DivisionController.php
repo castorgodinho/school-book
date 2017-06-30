@@ -8,6 +8,7 @@ use app\models\SearchDivision;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\widgets\ActiveForm;
 
 /**
  * DivisionController implements the CRUD actions for Division model.
@@ -65,13 +66,18 @@ class DivisionController extends Controller
     {
         $model = new Division();
 
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->division_id]);
-        } else {
+        }else{
             return $this->render('create', [
                 'model' => $model,
             ]);
-        }
+        } 
     }
 
     /**
@@ -83,6 +89,11 @@ class DivisionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->division_id]);

@@ -18,7 +18,7 @@ class SearchDivision extends Division
     public function rules()
     {
         return [
-            [['division_id', 'status'], 'integer'],
+            [['division_id'], 'integer'],
             [['division_label'], 'safe'],
         ];
     }
@@ -60,7 +60,6 @@ class SearchDivision extends Division
         // grid filtering conditions
         $query->andFilterWhere([
             'division_id' => $this->division_id,
-            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'division_label', $this->division_label]);

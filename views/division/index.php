@@ -12,7 +12,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="division-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
@@ -26,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'division_id',
             'division_label',
-            'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

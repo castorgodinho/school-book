@@ -10,11 +10,12 @@ use yii\widgets\ActiveForm;
 
 <div class="division-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'id' => 'division-input-form',
+        'enableAjaxValidation' => true,
+    ]); ?>
 
     <?= $form->field($model, 'division_label')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

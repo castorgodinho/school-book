@@ -18,7 +18,7 @@ class SearchGrade extends Grade
     public function rules()
     {
         return [
-            [['grade_id', 'status'], 'integer'],
+            [['grade_id'], 'integer'],
             [['grade_label'], 'safe'],
         ];
     }
@@ -60,7 +60,6 @@ class SearchGrade extends Grade
         // grid filtering conditions
         $query->andFilterWhere([
             'grade_id' => $this->grade_id,
-            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'grade_label', $this->grade_label]);

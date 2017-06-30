@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $division_id
  * @property string $division_label
- * @property integer $status
  *
  * @property ClassDivision[] $classDivisions
  * @property Grade[] $classes
@@ -31,9 +30,9 @@ class Division extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['division_label', 'status'], 'required'],
-            [['status'], 'integer'],
+            [['division_label'], 'required'],
             [['division_label'], 'string', 'max' => 10],
+            ['division_label', 'unique']
         ];
     }
 
@@ -45,7 +44,6 @@ class Division extends \yii\db\ActiveRecord
         return [
             'division_id' => 'Division ID',
             'division_label' => 'Division Label',
-            'status' => 'Status',
         ];
     }
 
